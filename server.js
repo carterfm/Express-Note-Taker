@@ -1,5 +1,7 @@
 const express = require('express');
 const path = require('path');
+// Notes router
+const notes = require('./routes/notes.js');
 
 const PORT = process.env.PORT || 3001;
 
@@ -8,6 +10,8 @@ const app = express();
 // Middleware for parsing JSON and urlencoded form data
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+// Middleware directing requests made to /api/notes to notes.js 
+app.use('/api/notes', notes);
 // Middleware directing static requests to the public directory
 app.use(express.static('public'));
 
