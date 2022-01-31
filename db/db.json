@@ -1,14 +1,7 @@
 [
     {
-        "title":"Test Title",
-        "text":"Test text"
-    },
-    {
-        "title":"Test Title 2",
-        "text":"Test text 2"
-    },
-    {
-        "title":"Test Title 3",
-        "text":"Test text 3"
+        "title": "Push note taker to heroku",
+        "text": "Remember, it's required for MVP!",
+        "id": "d6d5ff46-09c1-4ee5-b19e-dded9edb49d7"
     }
 ]
