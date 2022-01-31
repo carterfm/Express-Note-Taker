@@ -1,6 +1,6 @@
 //File for handling requests to /api/notes section of the site
 const notes = require('express').Router();
-const { readFromFile, readAndAppend } = require('../helpers/fsUtils.js');
+const { readFromFile, readAndAppend, deleteId } = require('../helpers/fsUtils.js');
 const { v4: uuidv4 } = require('uuid');
 
 notes.get('/', (req, res) => {
@@ -24,5 +24,12 @@ notes.post('/', (req, res) => {
     readAndAppend(newNote, './db/db.json');
     res.json(newNote);
 });
+
+notes.delete('/:id', (req, res) => {
+    console.log(req.params.id);
+    const idToDelete = req.params.id;
+    deleteId(idToDelete, './db/db.json');
+    res.json("Successfully processed delete request");
+})
 
 module.exports = notes;

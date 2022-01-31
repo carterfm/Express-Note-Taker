@@ -31,4 +31,22 @@ const readAndAppend = (content, file) => {
   });
 };
 
-module.exports = { readFromFile, writeToFile, readAndAppend };
+// Function to read db.json and delete an entry with a given id;
+const deleteId = (idToDelete, file) => {
+  fs.readFile(file, 'utf8', (err, data) => {
+    if (err) {
+      console.error(err);
+    } else {
+      const parsedData = JSON.parse(data);
+      for (let i = 0; i < parsedData.length; i++){
+        if (parsedData[i].id === idToDelete){
+          parsedData.splice(i, 1);
+          writeToFile(file, parsedData);
+          break;
+        }
+      }
+    }
+  });
+}
+
+module.exports = { readFromFile, writeToFile, readAndAppend, deleteId };
